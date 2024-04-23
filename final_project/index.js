@@ -11,10 +11,9 @@ app.use(express.json());
 app.use("/customer",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}))
 
 app.use("/customer/auth/*", function auth(req,res,next){
-  //Write the authenication mechanism here
   if (req.session.auth) { // get the authorization object stored in the session
-    token = req.session.auth['accessToken'];
-    jwt.verify(token, "user_access", (err, user)=>{
+    token = req.session.auth['accessToken']; // retrieve the token from authorization object
+    jwt.verify(token, "user_access", (err, user)=>{ // Use JWT to verify token
       if (!err) {
         req.user = user;
         next();
