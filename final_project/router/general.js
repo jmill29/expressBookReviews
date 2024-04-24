@@ -109,4 +109,23 @@ public_users.get('/review/:isbn',function (req, res) {
   }
 });
 
+/************************************** API CALLS **************************************/
+
+const axios = require("axios");
+
+const getAllBooks = async () => {
+  const url = "http://localhost:5000/";
+
+  try {
+    const response = await axios.get(url);
+    console.log(response.data);
+  } catch (error) {
+    console.log(error.response.data);
+  }
+}
+
+getAllBooks();
+
+/************************************** API CALLS **************************************/
+
 module.exports.general = public_users;
