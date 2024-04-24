@@ -135,7 +135,19 @@ const getBookByISBN = async (isbn) => {
   }
 };
 
-getBookByISBN('10');
+const getBooksByAuthor = async (author) => {
+  const url = "http://localhost:5000/author/" + author;
+
+  try {
+    const response = await axios.get(url);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error.response.data);
+  }
+};
+
+getBooksByAuthor('Unknown');
+//getBookByISBN('10');
 //getAllBooks();
 
 /************************************** API CALLS **************************************/
