@@ -124,7 +124,19 @@ const getAllBooks = async () => {
   }
 }
 
-getAllBooks();
+const getBookByISBN = async (isbn) => {
+  const url = "http://localhost:5000/isbn/" + isbn;
+
+  try {
+    const response = await axios.get(url);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error.response.data);
+  }
+};
+
+getBookByISBN('10');
+//getAllBooks();
 
 /************************************** API CALLS **************************************/
 
