@@ -146,7 +146,20 @@ const getBooksByAuthor = async (author) => {
   }
 };
 
-getBooksByAuthor('Unknown');
+const getBookByTitle = async (title) => {
+  const url = "http://localhost:5000/title/" +  title;
+
+  axios.get(url)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error.response.data);
+    })
+};
+
+getBookByTitle("The Epic Of Gilgamesh");
+//getBooksByAuthor('Unknown');
 //getBookByISBN('10');
 //getAllBooks();
 
